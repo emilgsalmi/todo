@@ -1,3 +1,11 @@
-button{
-    color:lightcoral
+body{
+    .theList{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        width: 30%;
+        background-color: beige;
+        color: darkgrey;
+        list-style: none;
+    }
 }

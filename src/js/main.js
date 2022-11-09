@@ -7,12 +7,13 @@ function done (toDo){
         checkedContainer.removeChild(toDo);
         toDo.classList.remove("theList__checked")
         console.log("Du har ångrat din check av " + toDo.innerText);
-        container.appendChild(toDo);
+        container.appendChild(toDo);    
     } else{
         toDo.classList.add("theList__checked")
         console.log("Du har checkat av " + toDo.innerText);
         container.removeChild(toDo);
         checkedContainer.appendChild(toDo);
+        localStorage.setItem("theList", toDo.innerText);
     }
 
     }
@@ -26,7 +27,7 @@ class toDo{
 /* mitt objekt */
 let toDoList = [
 phone = new toDo ("looking through phone", 10),
-brush = new toDo ("brush teeth", 10),
+brush = new toDo ("brush teeth", 5),
 coffe = new toDo ("drinking coffé", 30),
 shower = new toDo ("taking a shower", 20),
 ];

@@ -44,7 +44,7 @@ let otherContainer= document.createElement("div")
 let aList = document.createElement("ul");
 let checkedList= document.createElement("ul");
 
-/* här är mina HTML klasser */
+/* här är mina HTML klasser och HTML nästlingar */
 otherContainer.className="checked";
 container.className="container";
 aList.className="aList";

@@ -6,11 +6,11 @@ function done (toDo){
     if(toDo.classList.contains("theList__checked")) {
         checkedContainer.removeChild(toDo);
         toDo.classList.remove("theList__checked")
-        console.log("Du har ångrat din check av " + toDo.innerText);
+        console.log("Du har ångrat din check av " + toDo.innerText, false);
         container.appendChild(toDo);    
     } else{
         toDo.classList.add("theList__checked")
-        console.log("Du har checkat av " + toDo.innerText);
+        console.log("Du har checkat av " + toDo.innerText, true);
         container.removeChild(toDo);
         checkedContainer.appendChild(toDo);
         localStorage.setItem("theList", toDo.innerText);
@@ -34,6 +34,7 @@ shower = new toDo ("taking a shower", 20),
 
 /* min localStorage */
 localStorage.setItem("theList", JSON.stringify(toDoList));
+
 let myList = localStorage.getItem("theList");
 let List = JSON.parse(myList);
 

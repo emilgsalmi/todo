@@ -2,21 +2,21 @@
 function done (toDo){
     let checkedContainer=document.querySelector(".checked ul")
     let container=document.querySelector(".container ul")
+    console.log(List);
 
     if(toDo.classList.contains("theList__checked")) {
         checkedContainer.removeChild(toDo);
         toDo.classList.remove("theList__checked")
-        console.log("Du har ångrat din check av " + toDo.innerText, false);
-        container.appendChild(toDo);    
+        console.log("Du har ångrat din check av " + toDo.innerText);
+        container.appendChild(toDo);
     } else{
         toDo.classList.add("theList__checked")
-        console.log("Du har checkat av " + toDo.innerText, true);
+        console.log("Du har checkat av " + toDo.innerText);
         container.removeChild(toDo);
         checkedContainer.appendChild(toDo);
         localStorage.setItem("theList", toDo.innerText);
     }
-
-    }
+}
 /* min klass */
 class toDo{
     constructor(whatToDo,timeToDo){

@@ -2,34 +2,37 @@
 function done (toDo){
     let checkedContainer=document.querySelector(".checked ul")
     let container=document.querySelector(".container ul")
-    console.log(List);
+    console.log(toDoList);
 
     if(toDo.classList.contains("theList__checked")) {
         checkedContainer.removeChild(toDo);
-        toDo.classList.remove("theList__checked")
-        console.log("Du har ångrat din check av " + toDo.innerText);
+        toDo.classList.remove("theList__checked");
         container.appendChild(toDo);
+        console.log("Du har ångrat din check av " + toDo.innerText);
+
     } else{
-        toDo.classList.add("theList__checked")
-        console.log("Du har checkat av " + toDo.innerText);
+        toDo.classList.add("theList__checked");
         container.removeChild(toDo);
         checkedContainer.appendChild(toDo);
+        console.log("Du har checkat av " + toDo.innerText);
         localStorage.setItem("theList", toDo.innerText);
+
     }
 }
 /* min klass */
 class toDo{
-    constructor(whatToDo,timeToDo){
-    this.whatToDo=whatToDo;
-    this.timeToDo=timeToDo;
+    constructor(whatToDo,timeToDo,itsComplete){
+    this.whatToDo=whatToDo
+    this.timeToDo=timeToDo
+    this.itsComplete=itsComplete
     };
 }
 /* mitt objekt */
 let toDoList = [
-phone = new toDo ("looking through phone", 10),
-brush = new toDo ("brush teeth", 5),
-coffe = new toDo ("drinking coffé", 30),
-shower = new toDo ("taking a shower", 20),
+phone = new toDo ("looking through phone", 10, false),
+brush = new toDo ("brush teeth", 5, false),
+coffe = new toDo ("drinking coffé", 30, false),
+shower = new toDo ("taking a shower", 20, false),
 ];
 
 /* min localStorage */
@@ -73,7 +76,8 @@ for (let i= 0; i < List.length; i++){
     time.innerHTML=List[i].timeToDo + " min";
 
     aList.appendChild(rutine);
-    rutine.appendChild(time);    
+    rutine.appendChild(time);
+    
 }
 /* mina valda listItems */
 let listItem = document.querySelectorAll(".theList__item")
@@ -81,6 +85,7 @@ let listItem = document.querySelectorAll(".theList__item")
 /* min forloop för att sätta klick händelse */
 for (let i= 0; i < listItem.length; i++){
     listItem[i].addEventListener("click", () => {
-    done(listItem[i]);
+    done(listItem[i])
+    toDoList[i].itsComplete = true;
     });
 }

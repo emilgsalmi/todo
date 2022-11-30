@@ -1,5 +1,5 @@
 /* min function */
-function done (toDo){
+function done (toDo, i){
     let checkedContainer=document.querySelector(".checked ul")
     let container=document.querySelector(".container ul")
     console.log(toDoList);
@@ -9,14 +9,18 @@ function done (toDo){
         toDo.classList.remove("theList__checked");
         container.appendChild(toDo);
         console.log("Du har ångrat din check av " + toDo.innerText);
-
     } else{
         toDo.classList.add("theList__checked");
         container.removeChild(toDo);
         checkedContainer.appendChild(toDo);
         console.log("Du har checkat av " + toDo.innerText);
         localStorage.setItem("theList", toDo.innerText);
+    }
 
+    if (toDoList[i].itsComplete === false){
+        toDoList[i].itsComplete = true;
+    } else{
+        toDoList[i].itsComplete = false;
     }
 }
 /* min klass */
@@ -85,7 +89,6 @@ let listItem = document.querySelectorAll(".theList__item")
 /* min forloop för att sätta klick händelse */
 for (let i= 0; i < listItem.length; i++){
     listItem[i].addEventListener("click", () => {
-    done(listItem[i])
-    toDoList[i].itsComplete = true;
+    done(listItem[i], i)
     });
 }
